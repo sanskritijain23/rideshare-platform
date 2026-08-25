@@ -1,0 +1,48 @@
+# OPTIONAL — this project can run entirely without Docker.
+# See root README.md for the non-Docker (native npm + local PostgreSQL) setup.
+#
+# This file spins up PostgreSQL, the backend, and the frontend together for
+# convenience. Nothing here is required to work on the project.
+
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: rideshare_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: changeme
+      DB_NAME: rideshare_dev
+      PORT: 5000
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+
+volumes:
+  pgdata:

@@ -1,0 +1,12 @@
+-- ============================================================================
+-- Rideshare Platform — Database Schema
+-- Owned by: Member 3 (Database)
+--
+-- This file should always reflect the CURRENT full schema (source of truth).
+-- Incremental changes go into /migrations; this file is updated to match
+-- after each migration is applied.
+--
+-- No tables are defined yet — this is a placeholder for the initial schema
+-- design (users, rides, bookings, etc.) which will be added once requirements
+-- in docs/requirements.md and docs/database-design.md are finalized.
+-- ============================================================================

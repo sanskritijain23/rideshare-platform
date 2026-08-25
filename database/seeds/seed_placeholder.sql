@@ -1,0 +1,6 @@
+-- Seed data placeholder
+-- Owned by: Member 3 (Database)
+--
+-- Purpose: will contain sample users, rides, and bookings for local
+-- development and manual testing once the schema exists.
+-- Keep seed data clearly fake (no real personal data, no real credentials).

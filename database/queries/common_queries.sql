@@ -1,0 +1,8 @@
+-- Reusable / reference SQL queries
+-- Owned by: Member 3 (Database), consumed by Member 2 (Backend repositories)
+--
+-- Purpose: a shared place to draft and review queries (e.g. "find matching
+-- rides by source/destination/date") before they are implemented as
+-- functions in backend/src/repositories/.
+--
+-- No queries yet — schema must be finalized first.
