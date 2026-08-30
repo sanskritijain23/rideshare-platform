@@ -6,9 +6,9 @@
 -- Incremental changes go into /migrations; this file is updated to match
 -- after each migration is applied.
 --
--- No tables are defined yet — this is a placeholder for the initial schema
--- design (users, rides, bookings, etc.) which will be added once requirements
--- in docs/requirements.md and docs/database-design.md are finalized.
+-- This file contains the current full database schema for the RideShare
+-- platform. Incremental changes are tracked in /migrations and this file
+-- is kept synchronized with the latest applied schema.
 -- ============================================================================
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -52,7 +52,7 @@ CREATE TABLE rides (
     vehicle_number VARCHAR(30),
 
     available_seats INTEGER NOT NULL
-        CHECK (available_seats > 0),
+        CHECK (available_seats >= 0),
 
     contribution_per_seat NUMERIC(10,2) NOT NULL
         CHECK (contribution_per_seat >= 0),
