@@ -1,0 +1,42 @@
+Table users {
+  id integer [pk, increment]
+  name varchar(100) [not null]
+  email varchar(255) [not null, unique]
+  password_hash varchar(255) [not null]
+  phone varchar(20)
+  role varchar(20) [not null]
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+}
+
+Table rides {
+  id integer [pk, increment]
+  driver_id integer [not null]
+  source varchar(100) [not null]
+  destination varchar(100) [not null]
+  travel_date date [not null]
+  departure_time time [not null]
+  vehicle_type varchar(20) [not null]
+  vehicle_number varchar(30)
+  available_seats integer [not null]
+  contribution_per_seat decimal(10,2) [not null]
+  status varchar(20) [not null]
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+}
+
+Table bookings {
+  id integer [pk, increment]
+  ride_id integer [not null]
+  passenger_id integer [not null]
+  seats_requested integer [not null]
+  status varchar(20) [not null]
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+}
+
+Ref: rides.driver_id > users.id
+
+Ref: bookings.ride_id > rides.id
+
+Ref: bookings.passenger_id > users.id
